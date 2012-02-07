@@ -25,13 +25,6 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src/main/js</directory>
-				<includes>
-					<include>**/*.js</include>
-				</includes>
-				<targetPath>js</targetPath>
-			</resource>
-			<resource>
 				<directory>target/coffee</directory>
 				<includes>
 					<include>**/*.js</include>
@@ -60,7 +53,7 @@
 					</execution>
 				</executions>
 			</plugin>
-				<plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>webminifier-maven-plugin</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
@@ -75,9 +68,18 @@
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>js-import-maven-plugin</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<configuration>
+					<sourceJsFolder>${basedir}/src/main/coffee</sourceJsFolder>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jslint-maven-plugin</artifactId>
 				<version>1.0.1-SNAPSHOT</version>
 				<configuration>
+					<sourceJsFolder>${basedir}/src/main/coffee</sourceJsFolder>
 					<excludes>
 						<exclude>lib/*</exclude>
 					</excludes>
